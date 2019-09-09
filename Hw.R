@@ -16,8 +16,11 @@ m <-mean(y);std <-sqrt(var(y))
 curve(dnorm(x, mean=m, sd=std), col= 2, lwd=2, add=TRUE)
 dev.off()
 
+
 ## ECDF generation
+
 plot(ecdf(y), main = "ECDF of Plunger Relative Diameter (microns)")
+curve(pnorm(x, m, std), col= 2, lwd=2, add=TRUE)
 
 
 ## qq plot
