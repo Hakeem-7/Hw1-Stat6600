@@ -1,0 +1,77 @@
+---
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  html_notebook: default
+  word_document: default
+  fontsize: 12pt
+---
+
+
+# STAT 6600: Assignment 1
+## Due: September 10, 2019
+## Akeem Ajede
+
+\medskip
+```{r}
+Data = read.delim("Prob1InjectorPumps.txt", header = FALSE)
+```
+
+### Question 1(e)
+Use R to generate a histogram of the sample distribution with the "theoretical" pdf overlaid.
+\vskip
+
+### Solution
+```{r}
+Raw = read.table("Prob1InjectorPumps.txt", header = F)
+y = Raw[order(Raw$V1),]
+hist(y, prob = T, xlab = "Plunger Relative Diameter (microns)", ylab = "count", col = "green", main = "Histogram of Plunger Relative Diameter")
+m <-mean(y);std <-sqrt(var(y))
+curve(dnorm(x, mean=m, sd=std), col= 2, lwd=2, add=TRUE)
+
+```
+
+\medskip
+
+### Question 1(f)
+Use R to generate the empirical CDF with the "theoretical" CDF overlaid.
+
+### Solution
+```{r}
+plot(ecdf(y), main = "ECDF of Plunger Relative Diameter (microns)")
+curve(pnorm(x, m, std), col= 2, lwd=2, add=TRUE)
+```
+
+
+
+### Question 1(g)
+Use R to produce a normal QQ plot.
+
+### Solution
+```{r}
+qqnorm(y)
+qqline(y, col = "black")
+```
+
+\vskip
+### Question 1(h)
+Does the data look like it came from a normal population?l
+
+### Solution
+From the normality plot (i.e., qq - plot), the data form an approximately straight line along the normality line. Hence, it is safe to assume that the data came from a normal population.
+
+
+\vskip
+### Question 1(i)
+
+Recall that since $\bar{X} \approx N(\mu_{\bar{X}},\sigma^2_{\bar{X}}) = N(\mu, \frac{\sigma^2}{n}),$ the $SE(\hat{\mu}=\frac{s}{\sqrt{n}})=$ Compute a $90\%$ confidence interval on the true mean plunger force.
+
+
+
+
+
+
+
+
+
