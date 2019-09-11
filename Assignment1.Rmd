@@ -173,8 +173,11 @@ $t_\frac{\alpha}{2},_{n-2}= t_{0.05,94} = 0.397$,
 $S_n = \sqrt{\frac{\sum x_i^2-(\sum x_i)^2/n}{n}}$, $\sum_{i=1}^nx_i^2=27119.48$,
 $S_n = 1.843$
 
-Interval: $\bar{x}\pm t_\frac{\alpha}{2},_{n-2} *\frac{S_n}{\sqrt{n}}$ = $16.706 \pm 0.0747$ 
+Interval: $\bar{x}\pm t_\frac{\alpha}{2},_{n-2} *\frac{S_n}{\sqrt{n}}$ = $16.706 \pm(-0.312)$,
 
+$(16.394\leqslant \bar{x} \leqslant 17.018$
+
+                                
 
 \vskip
 ### Question 2(e)
