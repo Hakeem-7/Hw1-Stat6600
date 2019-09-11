@@ -41,4 +41,14 @@ curve(pexp(x,0.000152), add=TRUE, col= 2)
 
 install.packages('tinytex')
 
+# Question 1h (i):
 
+qt(0.05,94)
+
+
+library(MASS)
+library(stats4)
+
+
+qt(0.05,94)
+qnorm(0.05)

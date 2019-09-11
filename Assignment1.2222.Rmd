@@ -1,0 +1,184 @@
+---
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  html_notebook: default
+  word_document: default
+  fontsize: 12pt
+---
+
+
+# STAT 7860: Assignment 1
+#### Due: Thursday, September 5, 2019
+## Mark Uzochukwu
+
+\medskip
+```{r}
+setwd("C:/Users/marku/OneDrive/Desktop/STAT 6600/Homework/1")
+Data = read.delim("Prob1InjectorPumps.txt", header = FALSE)
+```
+
+
+```{r}
+Mack = Data[order(Data$V1),]
+stem(Mack,scale=2)
+```
+
+### Problem 1
+\vskip
+1(a) (by hand) Find the sample mean $\bar{x}$ and standard deviation $s$. Then compute the intervals
+$[\bar{x} - s, \bar{x} + s]$; $[\bar{x} - 2s, \bar{x} + 2s]$ and $[\bar{x} - 3s, \bar{x} + 3s]$ and compute the percentage of sample
+values that fall within each interval.
+
+\vskip
+#### Solution:
+The sample mean can be obtained from the 16th stem which is approximately 16.70. To seee this, observe that since the data are from a normal population, 
+the mean and median(50th precentile) coincide so to find the 50th percentile, we use the following method, $(n+1)p=(97)\frac{1}{2}=48.5.$
+Since $48.5$ isn't an integer, we write as $p=r+\frac{a}{b}$, where $r=48$ and $\frac{a}{b}=\frac{1}{2}.$
+Now, $\hat{\pi}_{\frac{1}{2}}=(1-\frac{1}{2})x_{48}+(\frac{1}{2})x_{49}=(\frac{1}{2})16.6+(\frac{1}{2})16.7=16.65$
+
+
+To get the standard deviation, we recall by the sigma rule, that $5\%$ of the data are beyond 2 standard deviations from the mean, therefore, 
+$96*5\%=4.8,$ so about 4 or 5 observations. So counting from the 16th stem of the stem plot we find that 4units to downwards and 3 units upwards will keep 4 observations beyond 2 standard deviations from the mean. Therefore, we choose the average, being $3.5=2\sigma,$
+therefore, $\sigma=1.75.$
+
+
+For the intervals, we get 
+
+(i) $[\bar{x} - s, \bar{x} + s] = [16.7 - 1.75, 16.7 + 1.75] = [14.95, 18.45]$ which traps $64(\approx 66.6\%)$ elements(of our data).
+
+(ii) $[\bar{x} - 2s, \bar{x} + 2s] = [16.7 - 2(1.75), 16.7 + 2(1.75)] = [13.2, 20.2]$ which traps $91(\approx 94.7\%)$ elements(of our data).
+
+(iii) $[\bar{x} - 3s, \bar{x} + 3s] = [16.7 - 3(1.75), 16.7 + 3(1.75)] = [11.45, 21.95]$ which traps $95(\approx 98.9\%)$ elements(of our data).
+
+
+
+1(b) (by hand) Find the minimum $x_{(1)}$ and the maximum $x_{(96)}$ order statistics, the 25th, 50th and 75th percentiles (also known as the 1st quartile $Q1$, the median $\tilde{x}$  and the third quartile $Q3$, respectively. Use the stem-and-leaf plot to do so. Also,find the interquartile range $IQR = Q3 - Q1$.
+
+#### Solution: 
+(i) $x_{(1)}=11.9$ and $x_{(96)}=22.1$
+
+(ii) The 25th percentile can be found as follows:
+
+Let $p=\frac{1}{4},$ then $(n+1)p=(97)\frac{1}{4}=22.25.$ Since $22.25$ isn't an integer, we write as $p=r+\frac{a}{b}$, where $r=22$ and $\frac{a}{b}=\frac{1}{4}.$
+Now, $\hat{\pi}_{\frac{1}{4}}=(1-\frac{1}{4})x_{22}+(\frac{1}{4})x_{23}=(\frac{3}{4})15.3+(\frac{1}{4})15.4=15.3$
+
+(iii) The 50th percentile has been calculated in part (a).
+
+
+(iv) The 75th percentile can be found as follows:
+
+Let $p=\frac{3}{4},$ then $(n+1)p=(97)\frac{3}{4}=72.75.$ Since $72.75$ isn't an integer, we write as $p=r+\frac{a}{b}$, where $r=72$ and $\frac{a}{b}=\frac{3}{4}.$
+Now, $\hat{\pi}_{\frac{3}{4}}=(1-\frac{3}{4})x_{72}+(\frac{3}{4})x_{73}=(\frac{3}{4})17.8+(\frac{1}{4})17.8=17.8$
+
+
+
+1(c) (by hand) Find the 5th and 95th percentiles $p_5$ and $p_{95}.$
+
+#### Solution:
+
+(i) The 5th percentile can be found as follows:
+
+Let $p=\frac{1}{20},$ then $(n+1)p=(97)\frac{1}{20}=22.25.$ Since $4.85$ isn't an integer, we write as $p=r+\frac{a}{b}$, where $r=4$ and $\frac{a}{b}=\frac{17}{20}.$
+Now, $\hat{\pi}_{\frac{1}{20}}=(1-\frac{1}{20})x_{4}+(\frac{1}{20})x_{5}=(\frac{19}{20})13.7+(\frac{1}{20})14.1=13.7.$
+
+
+
+(ii) The 95th percentile can be found as follows:
+
+Let $p=\frac{19}{20},$ then $(n+1)p=(97)\frac{19}{20}=92.15.$ Since $92.15$ isn't an integer, we write as $p=r+\frac{a}{b}$, where $r=92$ and $\frac{a}{b}=\frac{3}{20}.$
+Now, $\hat{\pi}_{\frac{19}{20}}=(1-\frac{19}{20})x_{92}+(\frac{19}{20})x_{93}=(\frac{1}{20})19.8+(\frac{19}{20})20.2=20.18.$
+
+
+1(d) Assuming that the data are from a normal population, and an expression for the maximum likelihood estimator of the CDF,
+$$F_X(x)=\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^xexp\Big\{ -\frac{(t-\mu)^2}{2\sigma^2}\Big\}dt.$$
+
+#### Solution:
+
+Using the invariant property of MLEs, an estimate of the CDF is given as
+$$F_X(x|\hat\theta)=\frac{1}{\sqrt{2\pi}\hat\sigma}\int_{-\infty}^xexp\Big\{ -\frac{(t-\hat\mu)^2}{2\hat\sigma^2}\Big\}dt,$$
+where $\hat\mu=\bar X=16.7$ and $\hat\sigma^2=\frac{\sum_{i=1}^{96}(x_i-\bar x)^2}{n}=3.3958.$
+
+1(e). Use R to generate a histogram of the sample distribution with the "theoretical" pdf overlaid.
+\vskip
+
+#### Solution
+```{r}
+hist(Data$V1, freq = FALSE, breaks=11, col="pink", xlab="Injector Pump", main="Histogram of Injector Pump")
+ rug(jitter(Data$V1))
+
+ 
+m <-mean(Data$V1)
+std <-sqrt(var(Data$V1))
+curve(dnorm(x, mean=m, sd=std), col= 3, lwd=2, add=TRUE)
+
+ #xfit<-seq(min(Data$V1), max(Data$V1), length=20)
+ #yfit<-dnorm(xfit, mean=mean(Data$V1), sd=sd(Data$V1))
+ #yfit <- yfit*diff(Data$V1[1:2])*length(Data$V1)
+ #lines(xfit, yfit, col="orange", lwd=2)
+ #box()
+```
+
+\medskip
+
+
+1(f) Use R to generate the empirical CDF with the "theoretical" CDF overlaid.
+
+#Solution
+```{r}
+set.seed(6600)
+x=rnorm(96, mean = 16.70625, sd = 1.852441)
+plot(ecdf(x))
+curve(pnorm(x, mean = 16.70625, sd = 1.852441), add=TRUE, col="red")
+```
+
+\vskip
+
+1(g) Use R to produce a normal QQ plot.
+
+#Solution
+```{r}
+qqnorm(Data$V1)
+```
+
+\vskip
+
+1(h) Does the data look like it came from a normal population?
+
+#Solution
+
+
+
+\vskip
+
+1(i) (by hand) Recall that since $\bar{X} \sim N(\mu_{\bar{X}},\sigma^2_{\bar{X}}) = N(\mu, \frac{\sigma^2}{n}),$ the $SE(\hat{\mu}=\frac{s}{\sqrt{n}})=$ Compute a $90\%$ confidence interval on the true mean plunger force.
+
+#Solution
+
+A $90\%$ confidence interval is given by $(\hat{\mu}-t_\frac{\alpha}{2}SE(\hat{\mu}), \hat{\mu}+t_\frac{\alpha}{2}SE(\hat{\mu})),$ where
+$\alpha=0.1.$
+Therefore the confidence interval is $(16.70625-1.661*1.852441, 16.70625+1.661*1.852441)=(13.62935,  19.78315)$
+```{r}
+16.70625-1.661*1.852441
+16.70625+1.661*1.852441
+```
+
+
+
+
+
+# Problem 2
+Suppose we have a random sample of size n from an exponential $(\theta)$ population. That is, $X_1,X_2,...,X_n \~ iid, \frac{1}{\theta}e^{-\frac{x}{\theta}}I_{(0, \infty)}(x),$ $\chi=(0, \infty)$ $\Theta=(0, \infty).$
+\vskip
+Note if $\theta$ represents the mean time for failure, for example, then $\lambda=\frac{1}{\theta}$ is known as the failure
+rate. So, an alternative parameterization for the exponential is\\
+$$f(x|\lambda)=\lambda e^{-\lambda x} I_{(0, \infty)}(x), \lambda \in \Theta=(0, \infty).$$
+
+
+
+\vskip
+
+2. 
+
+

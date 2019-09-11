@@ -1,17 +1,21 @@
 ---
+pdf_document: default
+author: "Akeem Ajede"
+date: "9/10/2019"
 output:
-  html_document:
-    df_print: paged
-  pdf_document: 
-  html_notebook: default
-  word_document: default
-  fontsize: 12pt
+    pdf_document: default
+    html_document: default
+title: "HW 1 (STAT 6600)"
 ---
-
-
 # STAT 6600: Assignment 1
 ## Due: September 10, 2019
 ## Akeem Ajede
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 
 \medskip
 
@@ -197,7 +201,3 @@ curve(pexp(x,0.000152), add=TRUE, col= 2)
 
 
 From the plot of the empiral CDF, it can be deduced that the sample data is from an exponential population data.
-
-
-
-

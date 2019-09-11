@@ -1,0 +1,118 @@
+---
+output:
+  pdf_document: default
+  fontsize: 12pt
+  html_notebook: default
+  html_document:
+    df_print: paged
+---
+
+
+# STAT 6600: Assignment 1
+#### Due: Tuesday, September 10, 2019
+## Akeem Ajede
+
+\medskip
+
+Leaf Unit = 0.1
+
+```{r}
+pump_data = read.delim("Prob1InjectorPumps.txt", header = F, col.names = "Akeem")
+pump_data
+
+pump_data = as.data.frame(pump_data)
+Plunger = pump_data[order(pump_data$Akeem),]
+stem(Plunger, scale = 2)
+
+
+```
+Leaf Unit = 0.1
+```{r}
+hist(pump_data$Akeem, breaks = 10, freq = F, xlab = "Plunger (Microns)", ylab = "count")
+
+
+lines(density(pump_data$Akeem), col = 2, lwd = 3)
+
+
+
+
+```
+
+```{r}
+plot(ecdf(pump_data$Akeem), col = "blue", lwd = 2)
+
+```
+
+```{r}
+
+qqnorm(pump_data$Akeem)
+
+
+```
+
+
+1(e). (Let $\{ Y_i \}$ be a stationary process and define $\nabla Y_t=Y_t-Y_{t-1}.$ Show that $\nabla Y_t$ has a larger variance than $Y_t$
+if $\rho_y(1)< \frac{1}{2}.$
+\vskip
+Solution:
+
+$var(\nabla Y_t)=var(Y_t-Y_{t-1})=var(Y_t)+var(Y_{t-1})-2cov(Y_t,Y_{t-1})$
+But 
+$\rho(1)=\frac{\gamma(1)}{\gamma(0)}=\frac{cov(Y_t,Y_{t-1})}{var(Y_{t-1})}$
+
+$\implies$
+
+$cov(Y_t,Y_{t-1})=\rho(1)var(Y_t)$
+
+Now,
+$var(\nabla Y_t)=var(Y_t-Y_{t-1})=var(Y_t)+var(Y_{t-1})-2\rho(1)var(Y_t)$
+
+$=var(Y_t)+var(Y_{t-1})-2\rho(1)var(Y_{t-1})$
+$=var(Y_t)+[1-2\rho(1)]var(Y_{t-1})$
+
+\medskip
+
+
+
+2. Consider the simple linear regression through the origin $y_i = i\beta/n + \epsilon_i$, with $\epsilon_i \sim N(0,1)$, $i = 1, \ldots, n$. Show that the maximum likelihood estimator is consistent for $\beta$.
+\medskip
+
+3. Let $\mathbf{X} \sim N_{n}(\boldsymbol{\mu}, \Sigma)$, where $\boldsymbol{\mu} = \mu \mathbf{1}_{n}$ and $\Sigma = \sigma^{2}[(1-\rho)I_{n} + \rho J_{n}]$, $0 \leq \rho < 1$. Show that $\bar{X}$ is distributed independently of $Q = [\sigma^{2}(1-\rho)]^{-1}\sum_{i=1}^{n}(X_{i} - \bar{X})^{2}$.
+\medskip
+
+4. Suppose $\mathbf{X} \sim N_{n}(\mathbf{0}, \sigma^{2}I_{n})$. Define $\mathbf{Y} = (Y_{1}, \ldots, Y_{n-1})'$, where $Y_{i} = \gamma X_{i} + X_{i+1}, \quad i = 1, \ldots, n-1$.
+Derive the distribution of $\mathbf{Y}$.
+\medskip
+
+5. Let $\mathbf{X} = (X_1, X_2, X_3)'$ be a  random vector so that
+$$ E(\mathbf{X}) = \left( \begin{array}{c}
+1 \\
+2 \\
+3 
+\end{array}
+\right)
+\quad
+\mbox{and}
+\quad Var(\mathbf{X}) = \left( \begin{array}{ccc}
+5 & 2 & 3 \\
+2 & 3 & 0 \\
+3 & 0 & 2
+\end{array}
+\right) $$
+Find an upper bound for $E(\|\mathbf{X}\|)$.
+\medskip
+
+6. Let $\mathbf{X}$ be as given in problem 5. Let $\mathbf{Y} = (Y_1, Y_2)'$ be a  random vector so that
+$$ E(\mathbf{Y}) = \left( \begin{array}{c}
+1 \\
+2 
+\end{array}
+\right)
+\quad
+\mbox{and}
+\quad Var(\mathbf{Y}) = \left( \begin{array}{ccc}
+5 & 2 \\
+2 & 3 
+\end{array}
+\right) $$
+Find an upper bound for $E(\|\mathbf{X}\|\|\mathbf{Y}\|)$.
