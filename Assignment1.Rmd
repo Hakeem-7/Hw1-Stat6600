@@ -1,8 +1,8 @@
 ---
 output:
+  pdf_document: 
   html_document:
     df_print: paged
-  pdf_document: 
   html_notebook: default
   word_document: default
   fontsize: 12pt

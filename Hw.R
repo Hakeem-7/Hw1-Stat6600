@@ -1,7 +1,7 @@
-x = read.table("Prob1InjectorPumps.txt", header = F)
-x
-fix(x)
-y = x[order(x$V1),]
+Raw = read.table("Prob1InjectorPumps.txt", header = F)
+Raw
+fix(Raw)
+y = Raw[order(Raw$V1),]
 y
 
 stem(y, scale = 2)
@@ -9,32 +9,36 @@ stem(y, scale = 2)
 summary(y)
 quantile(y, c(.05,.95))
 
+
+# Question 1e
 pdf("1e.pdf")
-hist(y, prob = T, xlab = "Plunger Relative Diameter (microns)", ylab = "count", col = "blue", main = "Histogram of Plunger Relative Diameter")
+hist(y, prob = T, xlab = "Plunger Relative Diameter (microns)", ylab = "count", col = "green", main = "Histogram of Plunger Relative Diameter")
 ## overlay with the theoretical pdf
 m <-mean(y);std <-sqrt(var(y))
 curve(dnorm(x, mean=m, sd=std), col= 2, lwd=2, add=TRUE)
 dev.off()
 
 
-## ECDF generation
-
+# Question 1f: ECDF generation
 plot(ecdf(y), main = "ECDF of Plunger Relative Diameter (microns)")
 curve(pnorm(x, m, std), col= 2, lwd=2, add=TRUE)
 
 
-## qq plot
+# Question 1g: qq plot
 qqnorm(y)
-qqline(y, col = "darkred")
-
-## from visual examination, the sample data closely align with the normality line. hence, it is safe to conclude that the data came from a normal population.
-
-qnorm(0.05)
+qqline(y, col = "black")
 
 
+# Question 2e
+q2 = c(106, 4972, 7140, 7661, 1776, 2471, 5550, 6959, 3541, 747, 5142, 25691, 11345, 10067, 5434)
+q2
+qqnorm(q2, col = "steelblue")
+qqline(q2)
 
 
+plot(ecdf(q2))
+curve(pexp(x,0.000152), add=TRUE, col= 2)
 
-
+install.packages('tinytex')
 
 
