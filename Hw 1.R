@@ -52,3 +52,21 @@ library(stats4)
 
 qt(0.05,94)
 qnorm(0.05)
+
+
+tinytex:::is_tinytex()
+
+Sys.which('pdflatex')
+
+xfun::session_info('rmarkdown')
+tinytex::tinytex_root()
+Sys.getenv('PATH')
+(tinytex::tlmgr_path())
+
+tinytex::uninstall_tinytex()
+
+
+install.packages('tinytex')
+tinytex::install_tinytex()
+tlmgr
+
