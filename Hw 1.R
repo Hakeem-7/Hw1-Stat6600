@@ -65,8 +65,8 @@ Sys.getenv('PATH')
 
 tinytex::uninstall_tinytex()
 
-
+tinytex:::is_tinytex()
 install.packages('tinytex')
 tinytex::install_tinytex()
-tlmgr
+
 
