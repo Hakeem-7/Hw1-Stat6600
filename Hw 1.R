@@ -69,4 +69,5 @@ tinytex:::is_tinytex()
 install.packages('tinytex')
 tinytex::install_tinytex()
 
+library("ggplot2")
 
